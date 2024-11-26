@@ -75,7 +75,7 @@ class RouteViewModel: ObservableObject {
         guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) else {
             return
         }
-        
+        // creating the task to fetch the data but doesnt do anything till resum method called
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 print("Network error: \(error?.localizedDescription ?? "Unknown error")")
@@ -170,7 +170,7 @@ class RouteViewModel: ObservableObject {
     }
 
 }
-
+//decodable allows swift to parse JSON data into swift obj
 struct DirectionsResponse: Decodable {
     let routes: [Route]
 }
