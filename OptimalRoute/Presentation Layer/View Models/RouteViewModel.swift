@@ -88,13 +88,17 @@ class RouteViewModel: ObservableObject {
                     print("No route found")
                     return
                 }
-                // update ui with route info
+                // update ui with route info, switch to main thread
                 DispatchQueue.main.async {
+                    // creating polyline and assigning it to route
                     self.route = self.polyline(for: route)
+                    //updates origin and destination coordinates
                     self.originCoordinate = originCoord
                     self.destinationCoordinate = destinationCoord
                     //self.totalDistance = route.legs.first?.distance.text ?? ""
                     //self.totalDuration = route.legs.first?.duration.text ?? ""
+
+                    //calls fnction to calculate and update distance and travel time for the route. this is to be displayed on the UI
                     
                     self.calculateTotalDistanceAndDuration(route: route)
 
