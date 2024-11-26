@@ -88,6 +88,7 @@ class RouteViewModel: ObservableObject {
                     print("No route found")
                     return
                 }
+                // update ui with route info
                 DispatchQueue.main.async {
                     self.route = self.polyline(for: route)
                     self.originCoordinate = originCoord
